@@ -1,0 +1,100 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f7f7;
+    padding-top: 40px;
+  }
+  
+  /* Walmart logo */
+  .walmart-logo {
+    margin-bottom: 20px;
+  }
+  
+  .walmart-logo img {
+    width: 120px;
+    height: auto;
+  }
+  
+  /* Login box */
+  .login-box {
+    background-color: #ffffff;
+    padding: 24px 28px;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title */
+  .login-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Form */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .login-label {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 4px;
+  }
+  
+  .login-input {
+    width: 94%;
+    padding: 10px;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+  
+  .login-input:focus {
+    border-color: #0071ce;
+    box-shadow: 0 0 0 2px rgba(0, 113, 206, 0.2);
+  }
+  
+  /* Button */
+  .login-button {
+    background-color: #0071ce;
+    color: white;
+    font-size: 0.95rem;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .login-button:hover {
+    background-color: #005fa3;
+  }
+  
+  /* Footer links */
+  .login-footer {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .login-footer a {
+    color: #0071ce;
+    text-decoration: none;
+  }
+  
+  .login-footer a:hover {
+    text-decoration: underline;
+  }
+  
