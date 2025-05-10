@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # walmart
 This Walmart project is a clone of amazon.
@@ -81,3 +82,7 @@ Search and filter functionality
 
 Admin dashboard for product management
 
+=======
+# cartrade
+This application where user can buy or sell cars eaisly.
+>>>>>>> c438294092ebbf4bfb17aca7c260eab9208b091d
