@@ -10,6 +10,7 @@ import { auth } from '../Component/firebase';
 
 // For displaying toast notifications
 import { toast, ToastContainer } from 'react-toastify';
+import CarTradeLogo from '../Assets/CarTrade.png';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
@@ -50,10 +51,7 @@ const LoginPage = () => {
     <div className="login-container">
       {/* Walmart logo at the top */}
       <div className="walmart-logo">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/2560px-Walmart_logo.svg.png"
-          alt="Walmart Logo"
-        />
+        <img src={CarTradeLogo} alt="CarTrade Logo" />
       </div>
 
       {/* Login form box */}
@@ -98,7 +96,7 @@ const LoginPage = () => {
 
         {/* Footer information */}
         <p className="login-footer">
-          By continuing, you agree to Walmart's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+          By continuing, you agree to CarTrade's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
         </p>
         
         {/* Link to registration page */}

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './cart.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart } from '../../redux/actions/actions';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
@@ -9,97 +7,89 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../Component/firebase';
 
 const Cart = () => {
-    const [cartItem, setCartItem] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Local state for auth
-    const dispatch = useDispatch();
+    const [formData, setFormData] = useState({
+        sellerName: '',
+        city: '',
+        address: '',
+        carType: '',
+        model: '',
+        color: '',
+        fuelType: '',
+        contact: '',
+    });
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navigate = useNavigate();
 
-    const cartItems = useSelector((state) => state.cart.items);
-
-    useEffect(() => {
-        setCartItem(cartItems);
-    }, [cartItems]);
-
-    // ✅ Listen for login state changes
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setIsLoggedIn(!!user); // true if user exists
+            setIsLoggedIn(!!user);
         });
         return () => unsubscribe();
     }, []);
 
-    const handleRemoveFromCart = (id) => {
-        toast.error("Item Removed From Cart", {
-            position: "bottom-right"
-        });
-        dispatch(removeFromCart(id));
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
-    const handleProceedToBuy = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         if (!isLoggedIn) {
-            toast.info("Please login to proceed", { position: "bottom-right" });
-            setTimeout(() => {
-                navigate('/LoginPage');
-            }, 2000);
-        } else {
-            toast.info("This part is under development", { position: "bottom-right" });
-            setTimeout(() => {
-                navigate('');
-            }, 2000);
+            toast.info('Please login to list your car.', { position: 'bottom-right' });
+            setTimeout(() => navigate('/LoginPage'), 2000);
+            return;
         }
-    };
 
-    const totalCost = cartItems.reduce((acc, item) => acc + item.price, 0);
+        console.log('Car listed:', formData);
+        toast.success('Car listed successfully!', { position: 'bottom-right' });
+
+        setFormData({
+            sellerName: '',
+            city: '',
+            address: '',
+            carType: '',
+            model: '',
+            color: '',
+            fuelType: '',
+            contact: '',
+        });
+    };
 
     return (
-        <div className="cart">
-            <div className="topLeftCart">
-                <div className="topLeftCartTitle">Shopping Cart</div>
-                <div className="desellectAllCart">Deselect all items</div>
-                <div className="cartPriceTextDivider">Price</div>
+        <div className="cart sell-car-form">
+            <h2 className="mainHeading">Sell Your Car</h2>
+            <p className="subHeading">Enter your car and contact details below</p>
 
-                <div className="cartItemsDiv">
-                    {
-                        cartItems.map((item) => (
-                            <div className="cartItemBlock" key={item.id}>
-                                <div className="cartItemLeftBlock">
-                                    <div className="CartItemLeftBloackImage">
-                                        <img className='cartItemLeftBlockImg' src={item.imageUrl} alt="Product" />
-                                    </div>
-                                    <div className='cartItemLeftBlockDetails'>
-                                        <div className='cartItemProductName'>{item.name}</div>
-                                        <div className='inStockCart'>In Stock</div>
-                                        <div className='elgFreeShip'>Eligible for FREE Shipping</div>
-                                        <div className='amazonFullFilledImage'>
-                                            <img className='fullfillimg' alt="" />
-                                        </div>
-                                        <div className='removeFromCart' onClick={() => handleRemoveFromCart(item.id)}>
-                                            Remove From Basket
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="cartItemRightBlock">
-                                    Rs {item.price}
-                                </div>
-                            </div>
-                        ))
-                    }
+            <form onSubmit={handleSubmit} className="horizontalForm">
+                <div className="formRow">
+                    <input type="text" name="sellerName" placeholder="Seller Name" value={formData.sellerName} onChange={handleChange} required />
+                    <input type="text" name="city" placeholder="City" value={formData.city} onChange={handleChange} required />
+                    <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
                 </div>
-            </div>
-
-            <div className="topRightCart">
-                <div className="subTotalTitle">
-                    Subtotal ({cartItem.length} items) : 
-                    <span className='subTotalTitleSpan'> Rs {totalCost}</span>
+                <div className="formRow">
+                    <input type="text" name="carType" placeholder="Car Type" value={formData.carType} onChange={handleChange} required />
+                    <input type="text" name="model" placeholder="Model" value={formData.model} onChange={handleChange} required />
+                    <input type="text" name="color" placeholder="Color" value={formData.color} onChange={handleChange} required />
                 </div>
-                <div className="giftAddto">
-                    <input type='checkbox' />
-                    <div>This Order Contains a gift</div>
+                <div className="formRow">
+                    <select name="fuelType" value={formData.fuelType} onChange={handleChange} required>
+                        <option value="">Fuel Type</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="CNG">CNG</option>
+                        <option value="Electric">Electric</option>
+                    </select>
+                    <input type="tel" name="contact" placeholder="Contact Number" value={formData.contact} onChange={handleChange} required />
+                    <div></div> {/* Empty div to maintain 3-column layout */}
                 </div>
-                <div className="proceedToBuy" onClick={handleProceedToBuy}>
-                    Proceed To Buy
+                <div className="formButtonWrapper">
+                    <button type="submit" className="submitCarButton">List My Car</button>
                 </div>
-            </div>
+            </form>
 
             <ToastContainer />
         </div>

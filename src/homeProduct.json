@@ -1,23 +1,25 @@
 {
     "product":[
         {
-            "itemTitle":"Revamp your home in style",
+            "itemTitle":"Get Cars in your city",
             "imgs":[
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_furnishings_2._SY116_CB584596691_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_decor_1._SY116_CB584596691_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_storage_1._SY116_CB584596691_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/186x116_Home_lighting_2._SY116_CB584596691_.jpg"
-            ]
+                "https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/141873/nexon-facelift-right-front-three-quarter-2.jpeg?isig=0&q=80",
+                "https://imgd-ct.aeplcdn.com/664x415/n/xrtambb_1688455.jpg?q=80",
+                "https://imgd-ct.aeplcdn.com/664x415/n/p7uambb_1688457.jpg?q=80",
+                "https://imgd-ct.aeplcdn.com/664x415/n/daabmbb_1688461.jpg?q=80"
+            ],
+            "dtls":"₹ 13.94 - 25.77 Lakh"
 
         },
         {
-            "itemTitle":"Appliances for your home | Up to 55% off",
+            "itemTitle":"Maruti Suzuki Cars in India",
             "imgs":[
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08RDL6H79._SY116_CB667322346_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08345R1ZW._SY116_CB667322346_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B07G5J5FYP._SY116_CB667322346_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/186x116---wm._SY116_CB667322346_.jpg"
-            ]
+                "https://imgd-ct.aeplcdn.com/664x415/n/cw/ec/130591/fronx-exterior-left-front-three-quarter-2.jpeg?isig=0&q=80",
+                "https://imgd-ct.aeplcdn.com/664x415/n/0xcf60b_1637313.jpg?q=80",
+                "https://imgd-ct.aeplcdn.com/664x415/n/xl6f60b_1637329.jpg?q=80",
+                "https://imgd-ct.aeplcdn.com/664x415/n/647f60b_1637325.jpg?q=80"
+            ],
+            "dtls":"₹ 9.10 - 16.07 Lakh"
 
         },
         {
@@ -31,52 +33,12 @@
 
         },
         {
-            "itemTitle":"Starting ₹199 | Amazon Brands & more",
+            "itemTitle":"Car Accessories & Covers | up to 60%off",
             "imgs":[
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_186_2._SY116_CB558389341_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_186_3._SY116_CB558389341_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_186_4._SY116_CB558389341_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_186_1._SY116_CB558389341_.jpg"
-            ]
-
-        },
-        {
-            "itemTitle":"Up to 60% off | Styles for women",
-            "imgs":[
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF1-186-116._SY116_CB636048992_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF2-186-116._SY116_CB636048992_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF4-186-116._SY116_CB636048992_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/Fashion/Gateway/BAU/BTF-Refresh/May/PC_WF/WF3-186-116._SY116_CB636048992_.jpg"
-            ]
-
-        },
-        {
-            "itemTitle":"Starting ₹129 | Amazon Brands & more",
-            "imgs":[
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/AmazonBrands/Deeksha/QC_186x116_1._SY116_CB598553050_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/AmazonBrands/Deeksha/QC_186x116_2._SY116_CB598553050_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/AmazonBrands/Deeksha/QC_372x232_3._SY116_CB598553751_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img22/AmazonBrands/Deeksha/QC_186x116_4._SY116_CB598553050_.jpg"
-            ]
-
-        },
-        {
-            "itemTitle":"Up to 60% off | Professional tools, testing & more",
-            "imgs":[
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2018/QC/Tools1x._SY116_CB424026090_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2021/BAU_GW_Graphics/PCQC/2._SY116_CB643952439_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2021/BAU_GW_Graphics/PCQC/1._SY116_CB643952439_.jpg",
-                "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Biss/2018/QC/med1x._SY116_CB424026091_.jpg"
-            ]
-
-        },
-        {
-            "itemTitle":"Best Sellers in Sports, Fitness & Outdoors",
-            "imgs":[
-                "https://m.media-amazon.com/images/I/51+b9IWWbjL._AC_SY200_.jpg",
-                "https://m.media-amazon.com/images/I/71RvZs6LY+L._AC_SY200_.jpg",
-                "https://m.media-amazon.com/images/I/61Av1lptLkL._AC_SY200_.jpg",
-                "https://m.media-amazon.com/images/I/61Mg9eVK0HL._AC_SY200_.jpg"
+                "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSkd21dMKS0jOBrAUKFzaNA-VXrtA4XyyCHLSHs-5Y0hJktrTL6_3Am84BNIJicaXN3XKXSxKokQUCt2c9f-vPrn7zsTOZwtqOxvT8VVAMSU25IZez0moTp",
+                "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTGRu1QLHo8yR03YpT06wtmu7IraJ5HJYpcxcMb702HOOFw9iLFOJKaEw5BnVRMF5la9N8G_qQQAI7mvofq4TmTkBJGnVPiYPb6aW4WNDhsTgK3A1FxTaP7ZA",
+                "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR9PtgnzJCInoLTbM6SHeMgojkqqGt7ch07ecXjO2_6r2lFwiYCOY5B2j8Cg7GruhwI4ZBLGeMIl-UkQu1ircI_Xxsh4C8ATlelLPRdjkcCe4m-LndgOLyG",
+                "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTUQ70YRkV5-76-6fRvCgIV8octp0GHTDow_SfAwUH4pE8Kg7IQHz7SqA_7VKAoQwEnVjPefz2sCc4oh0XbjocKaTFqtBDCbvZXhQsA9Vd3hK9fJqhlY7n2"
             ]
 
         }

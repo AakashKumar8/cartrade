@@ -13,7 +13,7 @@
 }
 .grayBackgroundHomeBanner{
     background-color: rgb(238, 235, 235);
-    height: 80vh;
+    height: 10vh;
 }
 .homeBannerItemDiv{
     display: grid;

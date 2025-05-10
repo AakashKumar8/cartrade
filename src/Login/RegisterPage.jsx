@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { auth, db } from "../Component/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-
+import CarTradeLogo from '../Assets/CarTrade.png';
 // Toast for user notifications
 import { toast } from 'react-toastify';
 
@@ -69,10 +69,7 @@ const RegisterPage = () => {
     <div className="login-container">
       {/* Walmart logo section */}
       <div className="walmart-logo">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Walmart_logo.svg/2560px-Walmart_logo.svg.png"
-          alt="Walmart Logo"
-        />
+        <img src={CarTradeLogo} alt="CarTrade Logo" />
       </div>
 
       {/* Registration form box */}
@@ -132,7 +129,7 @@ const RegisterPage = () => {
 
         {/* Terms and navigation links */}
         <p className="login-footer">
-          By continuing, you agree to Walmart's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+          By continuing, you agree to CarTrade's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
         </p>
         <p className="login-footer">
           Already have an account? <a href="/LoginPage">Log In</a>
