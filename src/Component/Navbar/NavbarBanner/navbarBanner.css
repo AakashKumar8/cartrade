@@ -1,66 +1,123 @@
-.navbarBanner{
-    background-color: #747575;
-    
-    padding: 0 0 0 11px;
-    display: flex;
-    height: 39px;
-    justify-content: space-between;
-    color: white;
+.navbarBanner {
+  background-color: #747575;
+  padding: 0 0 0 11px;
+  display: flex;
+  height: 39px;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  font-family: Arial, sans-serif;
 }
 
-.navbarBannerOptionsLeft{
-    display: flex;
-}
-.optionsNavbarBanner{
-    display: flex;
-    padding: 8px 9px;
-    justify-content: center;
-    text-decoration: none;
-    color: white;
-    align-items: center;
-    cursor: pointer;
-    &:hover{
-        border: 1px solid;
-        border-radius: 3px;
-    }
-}
-.allOptionsNavbarBanner{
-    font-size: 14px;
-    padding-left: 5px;
-    font-weight: 400;
+.navbarBannerOptionsLeft {
+  display: flex;
+  align-items: center;
 }
 
-.navbarBannerRightSide{
-    &:hover{
-        border: 1px solid;
-        border-radius: 2px;
-        cursor: pointer;
-    }
+.optionsNavbarBanner {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease, border 0.3s ease;
+  position: relative;
 }
+
+.optionsNavbarBanner:hover {
+  background-color: #5c5c5c;
+  border: 1px solid white;
+}
+
+.alloptionsNavbarBanner {
+  font-size: 14px;
+  padding-left: 5px;
+  font-weight: 400;
+}
+
+.navbarBannerRightSide {
+  padding: 8px 12px;
+  transition: border 0.3s ease;
+}
+
+.navbarBannerRightSide:hover {
+  border: 1px solid white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Dropdown container styling */
 .dropdown-container {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .dropdown-menu {
-    width: 190%;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dropdown-menu a {
-    padding: 8px 12px;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .dropdown-menu a:hover {
-    background-color: #f0f0f0;
-  }
-  
+  position: relative;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  width: 200px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown links and items */
+.dropdown-menu a,
+.dropdown-menu .dropdown-item {
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f0f0f0;
+  color: black;
+}
+
+/* Submenu styling for "By City" */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 101;
+  min-width: 160px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.has-submenu:hover .submenu {
+  display: flex;
+}
+
+/* Submenu links */
+.submenu a {
+  padding: 10px 14px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.submenu a:hover {
+  background-color: #f0f0f0;
+  color: black;
+}

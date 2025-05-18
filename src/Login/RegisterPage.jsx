@@ -1,36 +1,25 @@
 import React, { useState } from 'react';
-import './LoginPage.css'; // Reuse the same CSS styles as LoginPage
-
+import './LoginPage.css';
 import { useNavigate } from 'react-router-dom';
-
-// Firebase imports for auth and Firestore database
 import { auth, db } from "../Component/firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import CarTradeLogo from '../Assets/CarTrade.png';
-// Toast for user notifications
 import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
-  // State variables to manage user input
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); // Hook to redirect users
-
-  // Function to handle registration form submission
   const handleRegister = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
     try {
-      // Create user using Firebase Auth
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
 
-      console.log(user); // Log newly created user
-
-      // If user is created successfully, store user info in Firestore
       if (user) {
         await setDoc(doc(db, "Users", user.uid), {
           fullName: name,
@@ -38,47 +27,44 @@ const RegisterPage = () => {
         });
       }
 
-      console.log("User Registered Successfully!!");
-      toast.success("User Registered Successfully!!", {
+      toast.success("User Registered Successfully!", {
         position: "top-center",
       });
 
-      // Redirect to login page after successful registration
       navigate('/LoginPage');
     } catch (error) {
-      // Display appropriate alert based on error type
       if (error.code === 'auth/email-already-in-use') {
-        alert('This email is already registered. Please log in or use a different email.');
+        toast.error("This email is already registered.", {
+          position: "top-center",
+        });
       } else if (error.code === 'auth/invalid-email') {
-        alert('Please enter a valid email address.');
+        toast.error("Invalid email address.", {
+          position: "top-center",
+        });
       } else if (error.code === 'auth/weak-password') {
-        alert('Password should be at least 6 characters.');
+        toast.error("Password should be at least 6 characters.", {
+          position: "top-center",
+        });
       } else {
-        alert('Registration failed. Please try again later.');
+        toast.error("Registration failed. Please try again.", {
+          position: "top-center",
+        });
       }
 
-      // Log error and still show success toast (optional/likely unintended — should be error)
       console.error("Registration Error:", error.message);
-      toast.success("User Registered Successfully!!", {
-        position: "bottom-center",
-      });
     }
   };
 
   return (
     <div className="login-container">
-      {/* Walmart logo section */}
       <div className="walmart-logo">
         <img src={CarTradeLogo} alt="CarTrade Logo" />
       </div>
 
-      {/* Registration form box */}
       <div className="login-box">
         <h2 className="login-title">Create Your Account</h2>
 
-        {/* Registration form */}
         <form onSubmit={handleRegister} className="login-form">
-          {/* Full name field */}
           <div>
             <label className="login-label">Full Name</label>
           </div>
@@ -93,7 +79,6 @@ const RegisterPage = () => {
             />
           </div>
 
-          {/* Email field */}
           <div>
             <label className="login-label">Email Address</label>
           </div>
@@ -108,7 +93,6 @@ const RegisterPage = () => {
             />
           </div>
 
-          {/* Password field */}
           <div>
             <label className="login-label">Password</label>
           </div>
@@ -123,11 +107,9 @@ const RegisterPage = () => {
             />
           </div>
 
-          {/* Submit button */}
           <button type="submit" className="login-button">Register</button>
         </form>
 
-        {/* Terms and navigation links */}
         <p className="login-footer">
           By continuing, you agree to CarTrade's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
         </p>

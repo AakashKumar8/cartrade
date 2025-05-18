@@ -1,63 +1,158 @@
-.sell-car-form {
+.car-listings-container {
   max-width: 900px;
-  margin: auto;
-  background: #fdfdfd;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px #ccc;
+  margin: 20px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0 15px;
+}
+
+h2, h3 {
   text-align: center;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-.mainHeading {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.subHeading {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 2rem;
-}
-
-.horizontalForm {
+.car-form {
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  justify-content: space-between;
 }
 
-.formRow {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.formRow input,
-.formRow select {
-  flex: 1;
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 6px;
+.car-form input,
+.car-form select {
+  flex: 1 1 calc(25% - 15px); /* 4 items per row with 15px gap */
+  min-width: 150px;
+  padding: 8px 10px;
+  font-size: 14px;
   border: 1px solid #ccc;
-  min-width: 200px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
 }
 
-.formButtonWrapper {
+.car-form input[type="file"] {
+  flex: 1 1 100%; /* file input takes full width */
+  padding: 5px 0;
+}
+
+.car-form input:focus,
+.car-form select:focus {
+  border-color: #3b82f6; /* blue border on focus */
+  outline: none;
+}
+
+.form-buttons {
+  flex: 1 1 100%;
   display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.submitCarButton {
-  background-color: #007bff;
-  color: white;
+.form-buttons button {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
   border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.submitCarButton:hover {
-  background-color: #0056b3;
+.form-buttons button[type="submit"] {
+  background-color: #2563eb;
+  color: white;
+}
+
+.form-buttons button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #ef4444;
+  color: white;
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: #dc2626;
+}
+
+.listing-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.listing-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  word-wrap: break-word;
+}
+
+.listing-card h4 {
+  margin: 0;
+  font-weight: 700;
+  color: #111827;
+}
+
+.listing-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.listing-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.listing-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.listing-actions button {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.listing-actions button:first-child {
+  background-color: #2563eb;
+  color: white;
+}
+
+.listing-actions button:first-child:hover {
+  background-color: #1d4ed8;
+}
+
+.listing-actions button:last-child {
+  background-color: #ef4444;
+  color: white;
+}
+
+.listing-actions button:last-child:hover {
+  background-color: #dc2626;
+}
+
+/* Responsive tweak for small devices */
+@media (max-width: 600px) {
+  .car-form input,
+  .car-form select {
+    flex: 1 1 100%;
+  }
 }

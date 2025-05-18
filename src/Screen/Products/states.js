@@ -8,45 +8,40 @@ import 'react-toastify/dist/ReactToastify.css';
 import { db } from '../../Component/firebase';
 import { ref, onValue } from 'firebase/database';
 
-const Products = () => {
-  const { category } = useParams();
-  const [categoryProducts, setCategoryProducts] = useState([]);
+const States = () => {
+  const { type } = useParams(); // type = state name (e.g., delhi)
+  const [stateProducts, setStateProducts] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Fetch products from Firebase based on category
   useEffect(() => {
-    // Fetch categories first
-    const selectedCategoriesRef = ref(db, 'selectedCategories');
+    const selectedCategoriesRef = ref(db, 'selectedCategories/states');
     const unsubscribeCategories = onValue(selectedCategoriesRef, (snapshot) => {
-      const categoriesData = snapshot.val();
-      if (categoriesData && categoriesData[category]) {
-        // If the category exists, fetch products under that category
-        const productsRef = ref(db, `product/${category}`);
-        const unsubscribeProducts = onValue(productsRef, (productSnapshot) => {
-          const data = productSnapshot.val();
+      const stateExists = snapshot.val() && snapshot.val().includes(type);
+      if (stateExists) {
+        const productsRef = ref(db, `states/${type}`);
+        const unsubscribeProducts = onValue(productsRef, (snapshot) => {
+          const data = snapshot.val();
           if (data) {
-            const productList = Object.entries(data).map(([id, product]) => ({
+            const productsList = Object.entries(data).map(([id, product]) => ({
               id,
               ...product,
             }));
-            setCategoryProducts(productList);
+            setStateProducts(productsList);
           } else {
-            setCategoryProducts([]);
-            toast.info(`No products found for ${category}`);
+            setStateProducts([]);
+            toast.info(`No products found for ${type}`);
           }
         });
 
-        // Cleanup for products listener
         return () => unsubscribeProducts();
       } else {
-        toast.error(`Category ${category} does not exist`);
+        toast.error(`State "${type}" does not exist in categories.`);
       }
     });
 
-    // Cleanup for categories listener
     return () => unsubscribeCategories();
-  }, [category]);
+  }, [type]);
 
   const handleDealerClick = (product) => {
     setSelectedProduct(product);
@@ -56,35 +51,37 @@ const Products = () => {
   return (
     <div className="productPage">
       <div className="productTopBanner">
-        <div className="productTopBannerItems">{category}</div>
+        <div className="productTopBannerItems">{type}</div>
       </div>
 
       <div className="productsPageMainRightTopBanner">
-        Showing {categoryProducts.length} results for
-        <span className='productsPageMainRightTopBannerSpan'> {category}</span>
+        Showing {stateProducts.length} results for
+        <span className="productsPageMainRightTopBannerSpan"> {type}</span>
       </div>
 
       <div className="itemsImageProductPage">
-        {categoryProducts.map((item) => (
-          <div className='itemsImageProductPageOne' key={item.id}>
-            <div className='imgBloCkitemsImageProductPageOne'>
-              <img src={item.imageUrl} className='productImageProduct' alt={item.name} />
+        {stateProducts.map((item) => (
+          <div className="itemsImageProductPageOne" key={item.id}>
+            <div className="imgBloCkitemsImageProductPageOne">
+              <img src={item.imageUrl} className="productImageProduct" alt={item.name} />
             </div>
-            <div className='productNameProduc'>
+            <div className="productNameProduc">
               <div>{item.name}</div>
-              <div className='productNameProductRating'>
-                {[1, 2, 3, 4].map((i) => <StarRateIcon key={i} sx={{ fontSize: "16px", color: "#febd69" }} />)}
+              <div className="productNameProductRating">
+                {[1, 2, 3, 4].map((i) => (
+                  <StarRateIcon key={i} sx={{ fontSize: "16px", color: "#febd69" }} />
+                ))}
                 <StarOutlineIcon sx={{ fontSize: "16px", color: "#febd69" }} />
               </div>
-              <div className='priceProductDetailPage'>
-                <div className='currencyText'>₹</div>
-                <div className='rateHomeDetail'>
-                  <div className='rateHomeDetailsPrice'>{item.price}</div>
+              <div className="priceProductDetailPage">
+                <div className="currencyText">₹</div>
+                <div className="rateHomeDetail">
+                  <div className="rateHomeDetailsPrice">{item.price}</div>
                 </div>
               </div>
-              <div className='offProductPage'>Ex-Showroom price, Mumbai</div>
-              <div className='freeDeliveryHomepage'>
-                <button className='addtobasketBtn' onClick={() => handleDealerClick(item)}>
+              <div className="offProductPage">Ex-Showroom price, Mumbai</div>
+              <div className="freeDeliveryHomepage">
+                <button className="addtobasketBtn" onClick={() => handleDealerClick(item)}>
                   Dealer Details
                 </button>
               </div>
@@ -93,7 +90,7 @@ const Products = () => {
         ))}
       </div>
 
-      {/* Dealer Details Modal */}
+      {/* Dealer Modal */}
       {showModal && selectedProduct && (
         <div className="modalOverlay" onClick={() => setShowModal(false)}>
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
@@ -112,4 +109,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default States;

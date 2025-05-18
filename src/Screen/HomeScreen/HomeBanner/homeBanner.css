@@ -1,65 +1,115 @@
-.homeBanner{
+.homeBanner {
     width: 100%;
     object-fit: contain;
     background-repeat: no-repeat;
-    
     position: relative;
 }
-.homeBannerimg{
+
+.homeBannerimg {
     height: 80vh;
     width: 100% !important;
-    mask-image: linear-gradient(to bottom,rgba(0,0,0,1),rgba(0,0,0,0));
-    
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
-.grayBackgroundHomeBanner{
+
+.grayBackgroundHomeBanner {
     background-color: rgb(238, 235, 235);
     height: 10vh;
 }
-.homeBannerItemDiv{
+
+.homeBannerItemDiv {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     top: 22%;
     padding: 0 20px;
     position: absolute;
 }
-.homeBannerItemDivCard{
+
+/* Card Container */
+.homeBannerItemDivCard {
     display: flex;
-    background-color: white;
     flex-direction: column;
+    background-color: white;
     width: 343px;
     box-sizing: border-box;
     padding: 20px 0 15px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideFadeIn 0.6s ease forwards;
 }
-.homeBannerItemDivCardTitle{
+
+/* Fade slide animation */
+@keyframes slideFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.homeBannerItemDivCardTitle {
     margin: 0 20px;
     font-size: 21px;
     font-weight: 700;
 }
 
-.imgHomeBannerItemDivCard{
+.imgHomeBannerItemDivCard {
     margin: 10px 20px;
     display: grid;
     grid-template-columns: auto auto;
-
+    gap: 10px;
 }
-.imgBannerHomeDiv{
+
+/* Car image wrapper */
+.imgBannerHomeDiv {
     height: 144px;
     width: 144px;
     display: flex;
     flex-direction: column;
-}
-.imgBannerHomeDivImg{
-    width: 100%;
-}
-.imgBannerImgName{
-    font-size: 12px;
-    font-weight: 500;
+    animation: bounceIn 0.8s ease-in-out;
 }
 
-.seeMoreHomeBanner{
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(15px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Car image */
+.imgBannerHomeDivImg {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.imgBannerHomeDivImg:hover {
+    transform: scale(1.08);
+}
+
+/* Image title */
+.imgBannerImgName {
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 4px;
+}
+
+/* See More button */
+.seeMoreHomeBanner {
     margin: 0 20px;
     font-size: 13px;
     color: #007185;
     font-weight: 600;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.seeMoreHomeBanner:hover {
+    color: #004a5e;
 }

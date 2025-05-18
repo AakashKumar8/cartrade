@@ -1,73 +1,109 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './navbarBanner.css';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { db } from '../../firebase';
+import { ref, push } from 'firebase/database';
 
 const NavbarBanner = () => {
   const [showNewCarsDropdown, setShowNewCarsDropdown] = useState(false);
   const [showOldCarsDropdown, setShowOldCarsDropdown] = useState(false);
 
+  const navigate = useNavigate();
+
+  const newCarsRef = useRef(null);
+  const oldCarsRef = useRef(null);
+
   const toggleDropdown = (type) => {
     if (type === 'new') {
-      setShowNewCarsDropdown(!showNewCarsDropdown);
+      setShowNewCarsDropdown((prev) => !prev);
       setShowOldCarsDropdown(false);
     } else if (type === 'old') {
-      setShowOldCarsDropdown(!showOldCarsDropdown);
+      setShowOldCarsDropdown((prev) => !prev);
       setShowNewCarsDropdown(false);
     }
   };
 
+  const handleCategoryClick = (category) => {
+    const carsRef = ref(db, 'selectedCategories');
+    push(carsRef, {
+      category,
+      timestamp: new Date().toISOString(),
+    });
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        newCarsRef.current &&
+        !newCarsRef.current.contains(event.target) &&
+        oldCarsRef.current &&
+        !oldCarsRef.current.contains(event.target)
+      ) {
+        setShowNewCarsDropdown(false);
+        setShowOldCarsDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <div className="navbarBanner">
       <div className="navbarBannerOptionsLeft">
-        <div className="optionsNavbarBanner">
+        {/* Home Icon */}
+        <div className="optionsNavbarBanner" onClick={() => navigate('/')}>
           <MenuIcon sx={{ fontSize: '24px' }} />
-          <div className="alloptionsNavbarBanner">
-          
-            </div>
         </div>
 
         {/* New Cars Dropdown */}
-        <div className="optionsNavbarBanner dropdown-container" onClick={() => toggleDropdown('new')}>
+        <div
+          className="optionsNavbarBanner dropdown-container"
+          ref={newCarsRef}
+          onClick={() => toggleDropdown('new')}
+        >
           <div className="alloptionsNavbarBanner">New Cars</div>
           {showNewCarsDropdown && (
             <div className="dropdown-menu">
-              <Link to="/products/SUV">SUV</Link>
-              <Link to="/products/Sedan">Sedan</Link>
-              <Link to="/products/Hatchback">Hatchback</Link>
-              <Link to="/products/Crossover">Crossover</Link>
-              <Link to="/products/Convertible">Convertible</Link>
-              <Link to="/products/Electric Cars">Electric Cars</Link>
-              <Link to="/products/Minivan">Minivan</Link>
+              {['SUV', 'Sedan', 'Hatchback', 'Crossover', 'Convertible', 'Electric Cars', 'Minivan'].map((type) => (
+                <Link
+                  to={`/products/${type}`}
+                  key={type}
+                  onClick={() => {
+                    handleCategoryClick(type);
+                    setShowNewCarsDropdown(false);
+                  }}
+                >
+                  {type}
+                </Link>
+              ))}
             </div>
           )}
         </div>
 
-        {/* Old Cars Dropdown */}
-        <div className="optionsNavbarBanner dropdown-container" onClick={() => toggleDropdown('old')}>
-          <div className="alloptionsNavbarBanner">Old Cars</div>
-          {showOldCarsDropdown && (
-            <div className="dropdown-menu">
-              <Link to="/products/development">By City</Link>
-              <Link to="/products/development">By Model</Link>
-              <Link to="/products/development">By Brand</Link>
-              <Link to="/products/development">Explore Used Cars</Link>
-              <Link to="/products/development">CarWale abSure</Link>
-              <Link to="/products/development">Used Car Valuation</Link>
-            </div>
-          )}
-        </div>
-
-        {/* Remaining Static Links */}
-        <Link to="/products" className="optionsNavbarBanner">
+        {/* Static Links */}
+        <a
+          href="https://www.cartrade.com/car-loan/"
+          className="optionsNavbarBanner"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="alloptionsNavbarBanner">Car Loan</div>
-        </Link>
+        </a>
+
         <Link to="/cart" className="optionsNavbarBanner">
           <div className="alloptionsNavbarBanner">Sell Car</div>
         </Link>
-        <Link to="https://www.whatcar.com/reviews" className="optionsNavbarBanner">
+
+        <a
+          href="https://www.whatcar.com/reviews"
+          className="optionsNavbarBanner"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <div className="alloptionsNavbarBanner">News & Reviews</div>
-        </Link>
+        </a>
       </div>
     </div>
   );

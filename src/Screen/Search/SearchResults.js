@@ -1,65 +1,40 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import './SearchResults.css';
+import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import './SearchResults.css'; // optional for styling
 
 const SearchResults = () => {
   const location = useLocation();
-  const { results = [], make = '' } = location.state || {};
-  const [currentPage, setCurrentPage] = useState(1);
+  const { results = [], make } = location.state || {};
 
-  const itemsPerPage = 6;
-  const totalPages = Math.ceil(results.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentResults = results.slice(startIndex, startIndex + itemsPerPage);
+  // Ensure at least 3 items by repeating or filling
+  const extendedResults = [...results];
+  while (extendedResults.length < 3) {
+    extendedResults.push(...results);
+  }
+  const displayedResults = extendedResults.slice(0, 3);
 
-  const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
+  if (!results || results.length === 0) {
+    return (
+      <div className="searchResultsContainer">
+        <h2>No results found.</h2>
+        <Link to="/">Go back to home</Link>
+      </div>
+    );
+  }
 
   return (
-    <div className="search-container">
-      <h2>Car Models for: {make}</h2>
-      {currentResults.length > 0 ? (
-        <>
-          <div className="car-grid">
-            {currentResults.map((car) => {
-              const imageUrl =
-                car.image || `https://source.unsplash.com/400x250/?car,${car.Make_Name},${car.Model_Name}`;
-              return (
-                <div key={car.Model_ID} className="car-card">
-                  <img
-                    src={imageUrl}
-                    alt={`${car.Make_Name} ${car.Model_Name}`}
-                    className="car-image"
-                    onError={(e) => {
-                                      e.target.onerror = null;
-                                      e.target.src = 'https://via.placeholder.com/400x250?text=No+Image';
-                                    }}
-                  />
-                  <h3>{car.Make_Name} {car.Model_Name}</h3>
-                  <p><strong>Price Range:</strong> {car.priceRange || 'N/A'}</p>
-                </div>
-              );
-            })}
+    <div className="searchResultsContainer">
+      <h2>Search Results for "{make}"</h2>
+      <div className="resultsGrid">
+        {displayedResults.map((car, index) => (
+          <div key={index} className="carCard">
+            <img src={car.image} alt={`${car.Make_Name} ${car.Model_Name}`} className="carImage" />
+            <h3>{car.Make_Name}</h3>
+            <p>{car.Model_Name}</p>
           </div>
-
-          <div className="pagination">
-            <button onClick={handlePrev} disabled={currentPage === 1} className="pagination-button">
-              Previous
-            </button>
-            <span>Page {currentPage} of {totalPages}</span>
-            <button onClick={handleNext} disabled={currentPage === totalPages} className="pagination-button">
-              Next
-            </button>
-          </div>
-        </>
-      ) : (
-        <p>No models found.</p>
-      )}
+        ))}
+      </div>
+      <Link to="/">Back to Search</Link>
     </div>
   );
 };

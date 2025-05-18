@@ -1,46 +1,69 @@
-.search-container {
-  padding: 20px;
-  background-color: lightblue;
-  min-height: 100vh;
-}
+/* src/components/Pages/SearchResults.css */
 
-.car-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.car-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
+.searchResultsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
   text-align: center;
-  background-color: #fff;
 }
 
-.car-image {
+.searchResultsContainer h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-content: center;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+.carCard {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s ease;
+}
+
+.carCard:hover {
+  transform: scale(1.03);
+}
+
+.carImage {
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
   border-radius: 8px;
+  margin-bottom: 15px;
 }
 
-.pagination {
+.carCard h3 {
+  font-size: 20px;
+  margin: 10px 0 5px;
+  color: #222;
+}
+
+.carCard p {
+  font-size: 16px;
+  color: #666;
+}
+
+.searchResultsContainer a {
+  display: inline-block;
   margin-top: 20px;
-  text-align: center;
-}
-
-.pagination-button {
-  margin: 0 10px;
-  padding: 8px 16px;
-  cursor: pointer;
-  background-color: #007BFF;
+  text-decoration: none;
   color: #fff;
-  border: none;
-  border-radius: 5px;
+  background-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
-.pagination-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+.searchResultsContainer a:hover {
+  background-color: #0056b3;
 }
