@@ -46,3 +46,7 @@ CarTrade is a modern web application where users can explore a wide variety of c
    ```bash
    git clone https://github.com/AakashKumar8/cartrade.git
    cd cartrade
+
+## Explanation Link
+https://www.loom.com/share/c91540d8bc824dc1a593d77fd7c97097?sid=c07f2b0b-0514-40f1-b99f-950a6a6ba1c5
+https://www.loom.com/share/9c3e5e8c6d524d87bb089938a2c28013
